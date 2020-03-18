@@ -1,2 +1,2 @@
 # twitterLibrary
-Twitter Library Protorype
+Twitter Library Prototype
