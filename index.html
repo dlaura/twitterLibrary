@@ -377,12 +377,17 @@
         console.log(document.getElementById("handle").value);
         console.log(document.getElementById("book_title").value);
 
-        var ws = new WebSocket('wss://8ic293a2od.execute-api.us-east-2.amazonaws.com/test');
+        var ws = new WebSocket('wss://8ic293a2od.execute-api.us-east-2.amazonaws.com/prod');
         ws.onopen = function() {
             console.log('socket connection opened properly');
+            var dataStr = JSON.stringify({
+                book_title: document.getElementById("book_title").value,
+                user_id: document.getElementById("handle").value
+            });
+            console.log("dataStr ", dataStr);
             ws.send(JSON.stringify({
-                    action: "book_request",
-                    data: document.getElementById("book_title").value
+                    action: "book_donation",
+                    data: dataStr
                 } // persistent data
             ));
             console.log('message sent');
@@ -391,6 +396,7 @@
         ws.onmessage = function(evt) {
             console.log("Message received = " + evt.data);
             document.querySelector(".return_message").style.display = "block";
+            ws.close();
         };
 
         ws.onclose = function() {
@@ -404,15 +410,18 @@
     function submitted_request(event) {
         document.querySelector(".return_message").innerHTML = "Currently there is no donnor for this book. If your book is available, we will share your handle privately and the user will contact you by DM.";
         event.preventDefault();
-        console.log(document.getElementById("r_handle").value);
-        console.log(document.getElementById("r_book_title").value);
 
-        var ws = new WebSocket('wss://8ic293a2od.execute-api.us-east-2.amazonaws.com/test');
+        var ws = new WebSocket('wss://8ic293a2od.execute-api.us-east-2.amazonaws.com/prod');
         ws.onopen = function() {
             console.log('socket connection opened properly');
+            var dataStr = JSON.stringify({
+                book_title: document.getElementById("r_book_title").value,
+                user_id: document.getElementById("r_handle").value
+            });
+            console.log("dataStr ", dataStr);
             ws.send(JSON.stringify({
                     action: "book_request",
-                    data: document.getElementById("r_book_title").value
+                    data: dataStr
                 } // persistent data
             ));
             console.log('message sent');
@@ -420,8 +429,8 @@
 
         ws.onmessage = function(evt) {
             console.log("Message received = " + evt.data);
-
             document.querySelector(".return_message").style.display = "block";
+            ws.close();
         };
 
         ws.onclose = function() {
