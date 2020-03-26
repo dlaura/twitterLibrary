@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Twitter share</title>
+    <meta name="description" content="share">
+    <meta name="author" content="share">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:url" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="share" />
+    <meta property="og:description" content="share" />
+
+
+
+    <style>
+    body {
+            padding: 0;
+            margin: 0
+        }
+        
+        @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic);
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-font-smoothing: antialiased;
+            -o-font-smoothing: antialiased;
+            font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+        
+        body {
+            font-family: "Roboto", Helvetica, Arial, sans-serif;
+            font-weight: 100;
+            font-size: 12px;
+            line-height: 30px;
+            color: #777;
+            background: #cae5fd;
+        }
+        
+        .description {
+            display: block;
+            margin: 0px auto 30px;
+            width: 100%;
+            position: relative;
+        }
+        
+        .container {
+            max-width: 400px;
+            width: 100%;
+            margin: 50px auto 0;
+            position: relative;
+            background: #ffffff;
+            padding: 50px 25px;
+            box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+        }
+        
+        .contact input[type="text"],
+        .contact textarea,
+        .contact button[type="submit"] {
+            font: 400 12px/16px "Roboto", Helvetica, Arial, sans-serif;
+        }
+        
+        h1,
+        h2 {
+            display: block;
+            font-size: 25px;
+            font-weight: 400;
+            margin-bottom: 10px;
+        }
+        
+        h2 {
+            font-size: 20px;
+        }
+        
+        .contact h3 {
+            display: block;
+            font-size: 30px;
+            font-weight: 300;
+            margin-bottom: 10px;
+            margin-top: 25px;
+        }
+        
+        .contact h4 {
+            margin: 5px 0 15px;
+            display: block;
+            font-size: 13px;
+            font-weight: 400;
+        }
+        
+        fieldset {
+            border: medium none !important;
+            margin: 0 0 10px;
+            min-width: 100%;
+            padding: 0;
+            width: 100%;
+        }
+        
+        .contact input[type="text"],
+        .contact textarea {
+            width: 100%;
+            border: 1px solid #F5F8FA;
+            background: #F5F8FA;
+            border-radius: 8px;
+            margin: 0 0 5px;
+            padding: 10px;
+        }
+        
+        .contact input[type="text"]:hover,
+        .contact textarea:hover {
+            -webkit-transition: border-color 0.3s ease-in-out;
+            -moz-transition: border-color 0.3s ease-in-out;
+            transition: border-color 0.3s ease-in-out;
+            border: 1px solid #aaa;
+        }
+        
+        .contact textarea {
+            height: 100px;
+            max-width: 100%;
+            resize: none;
+        }
+        
+        .contact button[type="submit"] {
+            cursor: pointer;
+            width: 100%;
+            border: none;
+            background: #1C94E0;
+            color: #FFF;
+            margin: 0 0 5px;
+            padding: 10px;
+            font-size: 15px;
+            border-radius: 15px;
+        }
+        
+        .contact button[type="submit"]:hover {
+            background: #07b8f2;
+            -webkit-transition: background 0.3s ease-in-out;
+            -moz-transition: background 0.3s ease-in-out;
+            transition: background-color 0.3s ease-in-out;
+        }
+        
+        .return_message {
+            display: block;
+            font-size: 16px;
+            font-weight: 300;
+            margin-bottom: 10px;
+            margin-top: 25px;
+        }
+        
+        input[type=checkbox]+label {
+            margin: 0.2em;
+            cursor: pointer;
+            padding: 0.2em;
+            display: inline-block;
+            float: right;
+            width: 94%;
+            line-height: 14px;
+        }
+        
+        .contact button[type="submit"]:active {
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        
+        .contact input:focus,
+        .contact textarea:focus {
+            outline: 0;
+            border: 1px solid #aaa;
+        }
+        
+         ::-webkit-input-placeholder {
+            color: #AAB8C2;
+        }
+        
+         :-moz-placeholder {
+            color: #AAB8C2;
+        }
+        
+         ::-moz-placeholder {
+            color: #AAB8C2;
+        }
+        
+         :-ms-input-placeholder {
+            color: #AAB8C2;
+        }
+        /*Button toogle*/
+        
+        .knobs,
+        .layer {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+        
+        .button {
+            position: relative;
+            top: 50%;
+            width: 200px;
+            height: 36px;
+            margin: 20px auto 0 auto;
+            overflow: hidden;
+        }
+        
+        .button.r,
+        .button.r .layer {
+            border-radius: 100px;
+        }
+        
+        .checkbox {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            opacity: 0;
+            cursor: pointer;
+            z-index: 3;
+        }
+        
+        .knobs {
+            z-index: 2;
+        }
+        
+        .layer {
+            width: 100%;
+            background-color: #ebf7fc;
+            transition: 0.3s ease all;
+            z-index: 1;
+        }
+        /* Button 1 */
+        
+        #button-1 .knobs:before {
+            content: 'Request';
+            position: absolute;
+            top: 2px;
+            left: 4px;
+            width: 120px;
+            height: 14px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 1;
+            padding: 9px 4px;
+            background-color: #03A9F4;
+            border-radius: 14px;
+            transition: 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15) all;
+        }
+        
+        #button-1 .checkbox:checked+.knobs:before {
+            content: 'Donate';
+            left: 68px;
+            background-color: #03A9F4;
+        }
+        
+        #button-1 .checkbox:checked~.layer {
+            background-color: #ebf7fc;
+        }
+        
+        #button-1 .knobs,
+        #button-1 .knobs:before,
+        #button-1 .layer {
+            transition: 0.3s ease all;
+            box-shadow: inset 0px 1px 2px rgba(28, 148, 224, 0.1);
+        }
+    }
+    </style>
+</head>
+
+<body>
+
+    <section class="content">
+
+        <div class="container">
+            <section class="description">
+                <h1>Twitter Library</h1>
+                <h2>Request books or donate them to readers in your community.</h2>
+                <div class="button r" id="button-1">
+                    <input type="checkbox" class="checkbox" name="action">
+                    <div class="knobs"></div>
+                    <div class="layer"></div>
+                </div>
+            </section>
+
+            <form class="contact" id="donate" action="javascript:void(0);" method="post">
+
+                <h3>Donate a book</h3>
+                <fieldset>
+                    <input id="handle" placeholder="Your @handle" type="text" tabindex="1" required autofocus>
+                </fieldset>
+                <fieldset>
+                    <input id="book_title" placeholder="Book Title" type="text" tabindex="2" required>
+                </fieldset>
+                <!-- <fieldset>
+                    <textarea placeholder="Type your message here...." tabindex="3"></textarea>
+                </fieldset> -->
+                <fieldset>
+                    <input type="checkbox" id="privacy" name="privacy" required>
+                    <label for="privacy">Do you agree to share your handle with the user that is requesting this book? It will contact you by DM</label>
+                </fieldset>
+
+                <fieldset>
+                    <button name="submit" type="submit" id="donor_submit" data-submit="...Sending">Submit</button>
+                </fieldset>
+            </form>
+
+            <form class="contact" id="request" action="javascript:void(0);" method="post">
+
+                <h3>Request a book</h3>
+                <fieldset>
+                    <input id="r_handle" placeholder="Your @handle" type="text" tabindex="1" required autofocus>
+                </fieldset>
+                <fieldset>
+                    <input id="r_book_title" placeholder="Book Title" type="text" tabindex="2" required>
+                </fieldset>
+                <!-- <fieldset>
+                    <textarea placeholder="Type your message here...." tabindex="3"></textarea>
+                </fieldset> -->
+                <fieldset>
+                    <input type="checkbox" id="r_privacy" name="r_privacy" required>
+                    <label for="r_privacy">Do you agree to share your handle with the user that is donating this book? It will contact you by DM</label>
+                </fieldset>
+
+                <fieldset>
+                    <button name="submit" type="submit" id="requester_submit" data-submit="...Sending">Submit</button>
+                </fieldset>
+            </form>
+            <span class="return_message">Return Message</span>
+        </div>
+    </section>
+
+    <footer>
+
+    </footer>
+</body>
+
+<script>
+    window.onload = function() {
+        document.getElementById("donate").style.display = "none";
+        document.querySelector(".return_message").style.display = "none";
+        var form_request = document.getElementById("request");
+        form_request.onsubmit = submitted_request.bind(form_request);
+
+        var form_donate = document.getElementById("donate");
+        form_donate.onsubmit = submitted_donate.bind(form_donate);
+
+        var checkboxes = document.querySelectorAll('input[type=checkbox][name=action]');
+
+        for (var checkbox of checkboxes) {
+            checkbox.addEventListener('change', function(event) {
+                if (event.target.checked) {
+                    document.getElementById("donate").style.display = "block";
+                    document.getElementById("request").style.display = "none";
+                    document.querySelector(".return_message").style.display = "none";
+                    // alert(`${event.target.value} is checked`);
+                } else {
+                    document.getElementById("donate").style.display = "none";
+                    document.getElementById("request").style.display = "block";
+                    document.querySelector(".return_message").style.display = "none";
+                    // alert(`${event.target.value} is unchecked`);
+                }
+            });
+        }
+
+
+    }
+
+    function submitted_donate(event) {
+        document.querySelector(".return_message").innerHTML = "Thanks for your Donation! Currently there is no requester for this book. If your book is requested, we will share your handle privately and the user will contact you by DM";
+        event.preventDefault();
+        console.log(document.getElementById("handle").value);
+        console.log(document.getElementById("book_title").value);
+
+        var ws = new WebSocket('wss://8ic293a2od.execute-api.us-east-2.amazonaws.com/test');
+        ws.onopen = function() {
+            console.log('socket connection opened properly');
+            ws.send(JSON.stringify({
+                    action: "book_request",
+                    data: document.getElementById("book_title").value
+                } // persistent data
+            ));
+            console.log('message sent');
+        };
+
+        ws.onmessage = function(evt) {
+            console.log("Message received = " + evt.data);
+            document.querySelector(".return_message").style.display = "block";
+        };
+
+        ws.onclose = function() {
+            // websocket is closed.
+            console.log("Connection closed...");
+
+        };
+    }
+
+
+    function submitted_request(event) {
+        document.querySelector(".return_message").innerHTML = "Currently there is no donnor for this book. If your book is available, we will share your handle privately and the user will contact you by DM.";
+        event.preventDefault();
+        console.log(document.getElementById("r_handle").value);
+        console.log(document.getElementById("r_book_title").value);
+
+        var ws = new WebSocket('wss://8ic293a2od.execute-api.us-east-2.amazonaws.com/test');
+        ws.onopen = function() {
+            console.log('socket connection opened properly');
+            ws.send(JSON.stringify({
+                    action: "book_request",
+                    data: document.getElementById("r_book_title").value
+                } // persistent data
+            ));
+            console.log('message sent');
+        };
+
+        ws.onmessage = function(evt) {
+            console.log("Message received = " + evt.data);
+
+            document.querySelector(".return_message").style.display = "block";
+        };
+
+        ws.onclose = function() {
+            // websocket is closed.
+            console.log("Connection closed...");
+        };
+    }
+</script>
+
+</html>
